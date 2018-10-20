@@ -16,7 +16,7 @@ class App extends React.Component {
     };
   }
   switchPage() {
-    if(this.state.page == 'home') {
+    if(this.state.page === 'home') {
       this.setState({page: 'questions'});
     }
     this.render();
@@ -25,7 +25,7 @@ class App extends React.Component {
     this.setState({name:e.target.value})
   }
   render() {
-    if(this.state.page == 'home') {
+    if(this.state.page === 'home') {
       return (
       <div className = "App">
         <Home />
@@ -33,7 +33,7 @@ class App extends React.Component {
         </a>
       </div>
     );
-    } else if (this.state.page == 'questions') {
+    } else if (this.state.page === 'questions') {
       return (
         <div className = "App">
         <Questions />
