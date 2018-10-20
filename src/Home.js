@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import React from 'react';
 
 class Home extends React.Component {
   render() {

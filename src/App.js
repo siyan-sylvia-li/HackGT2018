@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import React from 'react';
 import Home from './Home.js'
 
 class App extends React.Component {
@@ -24,7 +23,7 @@ class App extends React.Component {
       <div className = "App">
         <Home />
         <button onClick={this.switchPage}>
-            <img src="./img/google.png" alt="my image" onClick={this.myfunction} />
+            <img src="./img/google.png" alt="" onClick={this.myfunction} />
         </button>
       </div>
     )
