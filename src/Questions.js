@@ -3,8 +3,32 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
+var DatePicker = require("react-bootstrap-date-picker");
+
 class Questions extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.getInitialVal = this.getInitialVal.bind(this);
+    this.state = {
+      value: '',
+      formattedValue: ''
+    };
+  }
+
+  getInitialVal() {
+    var value = new Date().toISOString();
+    this.setState({value: value});
+  }
+  handleChange(value, formattedValue) {
+    this.setState({
+      value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
+      formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
+    });
+  }
+  
   render() {
+    this.getInitialVal();
     return (
       <div className = "Questions">
       <Form>
@@ -28,6 +52,7 @@ class Questions extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label for="deadline">When is your deadline?</Label>
+          <DatePicker id="example-datepicker" value={this.state.value} onChange={this.handleChange} />
         </FormGroup>
       </Form>
       </div>
