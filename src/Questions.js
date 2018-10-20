@@ -6,7 +6,7 @@ class Questions extends React.Component {
     return (
       <div className = "Questions">
           <p> What is your assignment? </p>
-          <input type="text" name="name" />
+          <input type="text" name="assignment" />
       </div>
     )
   }

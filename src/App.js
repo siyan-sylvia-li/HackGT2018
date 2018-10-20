@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import React from 'react';
 import Home from './Home.js'
 import Questions from './Questions.js'
 import './App.css'
