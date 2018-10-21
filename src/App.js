@@ -36,11 +36,16 @@ class App extends React.Component {
   }
 
   switchPage() {
+<<<<<<< HEAD
+    if(this.state.page === 'home') {
+      this.setState({page: 'questions'});
+=======
     if(this.state.page == 'home') {
       this.setState({page: 'daily'});
     }
     if(this.state.page == 'daily') {
       this.setState({page: 'questions'})
+>>>>>>> fdffa4bc178d8f4b0f385f8c3385702efbaed2fd
     }
     this.render();
   }
@@ -48,7 +53,7 @@ class App extends React.Component {
     this.setState({name:e.target.value})
   }
   render() {
-    if(this.state.page == 'home') {
+    if(this.state.page === 'home') {
       return (
       <div className = "App">
         <Home />
@@ -56,7 +61,7 @@ class App extends React.Component {
         </a>
       </div>
     );
-    } else if (this.state.page == 'daily') {
+    } else if (this.state.page == 'daily'
       return (
         <div className = "App">
         <Daily />
