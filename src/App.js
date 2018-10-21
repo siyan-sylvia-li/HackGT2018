@@ -1,7 +1,9 @@
 import React from 'react';
 import Home from './Home.js'
 import Questions from './Questions.js'
+import Daily from './Daily.js'
 import './App.css'
+import {Button} from 'reactstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,13 +13,34 @@ class App extends React.Component {
     this.state = {
       page:'home',
       title:'',
+      total: 0,
       time: 0,
       deadline: ''
     };
   }
+
+  handleTitle(titleValue) {
+    this.setState({title: titleValue});
+  }
+
+  handleTotal(totalValue) {
+    this.setState({total: totalValue});
+  }
+
+  handleTime(timeValue) {
+    this.setState({time: timeValue});
+  }
+
+  handleDeadline(deadlineValue) {
+    this.setState({deadline: deadlineValue});
+  }
+
   switchPage() {
     if(this.state.page == 'home') {
-      this.setState({page: 'questions'});
+      this.setState({page: 'daily'});
+    }
+    if(this.state.page == 'daily') {
+      this.setState({page: 'questions'})
     }
     this.render();
   }
@@ -33,14 +56,21 @@ class App extends React.Component {
         </a>
       </div>
     );
+    } else if (this.state.page == 'daily') {
+      return (
+        <div className = "App">
+        <Daily />
+        <a href className = "Bt" onClick={this.switchPage}>
+        </a>
+      </div>
+        );
     } else if (this.state.page == 'questions') {
       return (
         <div className = "App">
         <Questions />
-        <a href className = "Bt" onClick={this.switchPage}>
-        </a>
+        <Button type="submit" onClick={this.switchPage}>Submit</Button>
       </div>
-        )
+        );
     }
   }
 }
