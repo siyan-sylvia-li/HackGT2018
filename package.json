@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@progress/kendo-scheduler-react-wrapper": "^2018.3.1017",
     "bootstrap": "^4.1.3",
     "react": "^16.5.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-day-picker": "^7.2.4",
     "react-dom": "^16.5.2",
+    "react-scheduler-smartdata": "^0.7.32",
     "react-scripts": "2.0.5",
     "reactstrap": "^6.5.0"
   },
