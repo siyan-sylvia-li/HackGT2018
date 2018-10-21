@@ -51,8 +51,20 @@ class App extends React.Component {
       + '", "deadline":"' + this.state.deadline + '", "totalTime":"'
       + this.state.totalTime + '", "timeslotLength":"'
       + this.state.time + '"}';
-      var obj = JSON.parse(str);
-      var fs = require('fs');
+
+       const jsonfile = require('jsonfile')
+ 
+        const file = 'questions.json'
+        const obj = JSON.parse(str);
+ 
+jsonfile.writeFile(file, obj, function (err) {
+  if (err) console.error(err)
+});
+    //   const writeJsonFile = require('write-json-file');
+ 
+    // (async () => {
+    //     await writeJsonFile('questions.json', obj);
+    // })();
 //       fetch('https://mywebsite.com/endpoint/', {
 //   method: 'POST',
 //   headers: {
@@ -64,18 +76,18 @@ class App extends React.Component {
 //     secondParam: 'yourOtherValue',
 //   })
 // })
-      fetch('http://127.0.0.1:5000/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: '{"assignment":"' + this.state.title
-      + '", "deadline":"' + this.state.deadline + '", "totalTime":"'
-      + this.state.totalTime + '", "timeslotLength":"'
-      + this.state.time + '"}',
-      }).then(response => response.json())
-      .then(data => console.log(data));
+      // fetch('http://localhost:5000/', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Accept': 'application/json',
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: '{"assignment":"' + this.state.title
+      // + '", "deadline":"' + this.state.deadline + '", "totalTime":"'
+      // + this.state.totalTime + '", "timeslotLength":"'
+      // + this.state.time + '"}'
+      // }).then(response => response.json())
+      // .then(data => console.log(data));
       //// JSON OBJECT INSERT HERE
       this.setState({page: 'api'})
     }

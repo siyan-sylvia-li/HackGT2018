@@ -70,23 +70,34 @@ import Item from './Item.js';
       + endNum + '}';
 
 
-    var obj = JSON.parse(str);
-    this.setState(prevState => ({
-      events: [...prevState.events, obj]
-    }));
+    const jsonfile = require('jsonfile');
+ 
+        const file = 'daily.json'
+        const obj = JSON.parse(str);
+ 
+jsonfile.writeFile(file, obj, function (err) {
+  if (err) console.error(err)
+});
 
-    fetch('http://127.0.0.1:5000/', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: '{"activity": "' + this.state.currentName
-      + '", "begin": ' + beginNum + ', "end": '
-      + endNum + '}',
-      }).then(response => response.json())
-      .then(data => console.log(data));
+
+    // const writeJsonFile = require('write-json-file');
+ 
+    // (async () => {
+    //     await writeJsonFile('daily.json', obj);
+    // })();
+
+    // fetch('http://127.0.0.1:5000/', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json',
+    //       'Access-Control-Allow-Origin': '*',
+    //     },
+    //     body: '{"activity": "' + this.state.currentName
+    //   + '", "begin": ' + beginNum + ', "end": '
+    //   + endNum + '}',
+    //   }).then(response => response.json())
+    //   .then(data => console.log(data));
   }
 
     render() {

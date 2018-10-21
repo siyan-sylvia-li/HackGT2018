@@ -7,6 +7,7 @@
     "@progress/kendo-ui": "^2018.3.1017",
     "bootstrap": "^4.1.3",
     "jquery": "^1.12.4",
+    "jsonfile": "^5.0.0",
     "react": "^16.5.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-big-scheduler": "^0.2.1",

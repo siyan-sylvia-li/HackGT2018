@@ -4,7 +4,10 @@ from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 from flask import Flask
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 
 # If modifying these scopes, delete the file token.json.
@@ -17,9 +20,10 @@ daily = {"daily": [[0, 8], [9, 10], [12.30, 13.30], [15, 16], [19, 20.], [23.30,
 
 @app.route('/')
 def mini():
-    print("Called")
-    return "Happy"
-
+    response = flask.jsonify({'some': 'data'})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+    
 def main():
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
