@@ -19,6 +19,8 @@ class App extends React.Component {
     };
   }
 
+  // For Questions.js
+
   handleAppTitle(titleValue) {
     this.setState({title: titleValue});
   }
@@ -41,12 +43,26 @@ class App extends React.Component {
     }
     if(this.state.page == 'daily') {
       this.setState({page: 'questions'});
+      ///parse events
+    }
+    if(this.state.page == 'questions') {
+      var str = '{"assignment":' + this.state.title
+      + ', "deadline":' + this.state.deadline + ', "totalTime":'
+      + this.state.totalTime + ', "timeslotLength":'
+      + this.state.time + '}';
+      var obj = JSON.parse(str);
+      //// JSON OBJECT INSERT HERE
     }
     this.render();
   }
+
   handleChange(e){
     this.setState({name:e.target.value})
   }
+
+
+  // For Parsing JSON data
+
   render() {
     if(this.state.page === 'home') {
       return (

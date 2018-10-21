@@ -4,6 +4,10 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
+import MomentLocaleUtils, {
+  formatDate,
+  parseDate,
+} from 'react-day-picker/moment';
 
 class Questions extends React.Component {
   constructor(props) {
@@ -27,7 +31,9 @@ class Questions extends React.Component {
   // }
   handleDayChange(day) {
     // this.props.handleDeadline(day);
-    this.props.handleDayChange(day);
+    var res = day.toLocaleDateString().split(" ");
+    console.log(res);
+    this.props.handleDayChange(day.toLocaleDateString());
   }
 
   handleTime(event) {
