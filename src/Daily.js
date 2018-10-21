@@ -70,13 +70,11 @@ import Item from './Item.js';
       + endNum + '}';
 
 
-    const jsonfile = require('jsonfile');
- 
-        const file = 'daily.json'
-        const obj = JSON.parse(str);
- 
-jsonfile.writeFile(file, obj, function (err) {
-  if (err) console.error(err)
+   const writeFileP = require("write-file-p");
+        writeFileP.sync(`daily.json`, {
+          activity: this.state.currentName,
+          begin: this.state.currentBegin,
+          end: this.state.currentEnd
 });
 
 

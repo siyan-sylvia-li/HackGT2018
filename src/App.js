@@ -52,14 +52,23 @@ class App extends React.Component {
       + this.state.totalTime + '", "timeslotLength":"'
       + this.state.time + '"}';
 
-       const jsonfile = require('jsonfile')
+       // const jsonfile = require('jsonfile')
  
-        const file = 'questions.json'
-        const obj = JSON.parse(str);
- 
-jsonfile.writeFile(file, obj, function (err) {
-  if (err) console.error(err)
+       //  const file = 'questions.json'
+       //  const obj = JSON.parse(str);
+       //  console.log(obj);
+
+        const writeFileP = require("write-file-p");
+        writeFileP.sync(`questions.json`, {
+          assignment: this.state.title,
+          deadline: this.state.deadline,
+          totalTime: this.state.totalTime,
+          timeslotLength: this.state.time
 });
+ 
+// jsonfile.writeFile(file, obj, function (err) {
+//   if (err) console.error(err)
+// });
     //   const writeJsonFile = require('write-json-file');
  
     // (async () => {
