@@ -19,19 +19,19 @@ class App extends React.Component {
     };
   }
 
-  handleTitle(titleValue) {
+  handleAppTitle(titleValue) {
     this.setState({title: titleValue});
   }
 
-  handleTotal(totalValue) {
+  handleAppTotal(totalValue) {
     this.setState({total: totalValue});
   }
 
-  handleTime(timeValue) {
+  handleAppTime(timeValue) {
     this.setState({time: timeValue});
   }
 
-  handleDeadline(deadlineValue) {
+  handleAppDeadline(deadlineValue) {
     this.setState({deadline: deadlineValue});
   }
 
@@ -67,7 +67,10 @@ class App extends React.Component {
     } else if (this.state.page == 'questions') {
       return (
         <div className = "App">
-        <Questions />
+        <Questions handleDayChange={(deadline) => this.handleAppDeadline(deadline)} 
+          handleTime={(time) => this.handleAppTime(time)}
+          handleTotal={(total) => this.handleAppTotal(total)}
+          handleAsn={(title) => this.handleAppTitle(title)}/>
         <Button type="submit" onClick={this.switchPage}>Submit</Button>
       </div>
         );

@@ -10,6 +10,9 @@ class Questions extends React.Component {
     super(props);
     // this.handleChange = this.handleChange.bind(this);
     this.handleDayChange = this.handleDayChange.bind(this);
+    this.handleTime = this.handleTime.bind(this);
+    this.handleTotal = this.handleTotal.bind(this);
+    this.handleAsn = this.handleAsn.bind(this);
     this.state = {
       selectedDay: undefined,
     };
@@ -23,8 +26,8 @@ class Questions extends React.Component {
 
   // }
   handleDayChange(day) {
-    this.setState({selectedDay: day});
-    this.props.handleDeadline(day);
+    // this.props.handleDeadline(day);
+    this.props.handleDayChange(day);
   }
 
   handleTime(event) {
@@ -36,7 +39,7 @@ class Questions extends React.Component {
   }
 
   handleAsn(event) {
-    this.props.handleTitle(event.target.value);
+    this.props.handleAsn(event.target.value);
   }
   
   render() {
