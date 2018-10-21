@@ -4,6 +4,7 @@ import Questions from './Questions.js'
 import Daily from './Daily.js'
 import './App.css'
 import {Button} from 'reactstrap';
+import API from './API.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class App extends React.Component {
     this.state = {
       page:'home',
       title:'',
-      total: 0,
-      time: 0,
+      total: 1,
+      time: 1,
       deadline: ''
     };
   }
@@ -46,12 +47,13 @@ class App extends React.Component {
       ///parse events
     }
     if(this.state.page == 'questions') {
-      var str = '{"assignment":' + this.state.title
-      + ', "deadline":' + this.state.deadline + ', "totalTime":'
-      + this.state.totalTime + ', "timeslotLength":'
-      + this.state.time + '}';
+      var str = '{"assignment":"' + this.state.title
+      + '", "deadline":"' + this.state.deadline + '", "totalTime":"'
+      + this.state.totalTime + '", "timeslotLength":"'
+      + this.state.time + '"}';
       var obj = JSON.parse(str);
       //// JSON OBJECT INSERT HERE
+      this.setState({page: 'api'})
     }
     this.render();
   }
@@ -88,6 +90,12 @@ class App extends React.Component {
           handleTotal={(total) => this.handleAppTotal(total)}
           handleAsn={(title) => this.handleAppTitle(title)}/>
         <Button type="submit" onClick={this.switchPage}>Submit</Button>
+      </div>
+        );
+    } else if (this.state.page == 'api') {
+      return(
+        <div className = "App">
+        <API />
       </div>
         );
     }

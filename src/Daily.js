@@ -63,7 +63,7 @@ import Item from './Item.js';
     if(end.charAt(pos + 1) == '3') {
       endNum = 0.5;
     }
-    endNum = endNum + parseInt(endNum.slice(pos - 2, pos), 10);
+    endNum = endNum + parseInt(end.slice(pos - 2, pos), 10);
     console.log(endNum);
     var str = '{"activity": "' + this.state.currentName
       + '", "begin": ' + beginNum + ', "end": '
