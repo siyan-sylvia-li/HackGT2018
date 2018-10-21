@@ -41,6 +41,10 @@ div {
 	flex-direction: column;
 }
 
+.Question {
+	overflow-y: scroll;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
