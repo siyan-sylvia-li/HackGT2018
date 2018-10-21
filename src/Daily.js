@@ -74,6 +74,19 @@ import Item from './Item.js';
     this.setState(prevState => ({
       events: [...prevState.events, obj]
     }));
+
+    fetch('http://127.0.0.1:5000/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: '{"activity": "' + this.state.currentName
+      + '", "begin": ' + beginNum + ', "end": '
+      + endNum + '}',
+      }).then(response => response.json())
+      .then(data => console.log(data));
   }
 
     render() {

@@ -3,6 +3,9 @@ from datetime import datetime, timezone, timedelta
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
+from flask import Flask
+app = Flask(__name__)
+
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/calendar'
@@ -12,6 +15,10 @@ event_create_dict = {}
 
 daily = {"daily": [[0, 8], [9, 10], [12.30, 13.30], [15, 16], [19, 20.], [23.30, 24]]}
 
+@app.route('/')
+def mini():
+    print("Called")
+    return "Happy"
 
 def main():
     """Shows basic usage of the Google Calendar API.
@@ -77,7 +84,7 @@ def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
-
+@app.route('/create_assignment')
 def create_assignment_events():
     start_date = datetime(2018, 10, 21)
     end_date = datetime(2018, 10, 28)
@@ -183,7 +190,7 @@ def overlap_intervals(intervals):
             res.append(n)
     return res
 
-
+@app.route('/create')
 def create_event():
     print(event_create_dict)
     assignment_name = "Assignment for TEST 212"
@@ -211,6 +218,8 @@ def create_event():
         endTime = date + "T" + hour + ":" + minutes + ":00-04:00"
         print(startTime)
         print(endTime)
+
+        return "Dummy Creation Data"
 
         #call_google_api(startTime, endTime, timeZone, assignment_name, assignment_desc)
 
